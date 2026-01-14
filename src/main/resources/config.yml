@@ -1,0 +1,48 @@
+# Название сервера (используется для логики мультисерверности, если нужно)
+server: "anarchy1"
+
+# Миры, в которых разрешено использовать РТП
+allowed_worlds:
+  - "world"
+
+# Блоки, на которые НЕЛЬЗЯ телепортироваться
+unsafe_blocks:
+  - "WATER"
+  - "LAVA"
+  - "KELP"
+  - "KELP_PLANT"
+  - "SEAGRASS"
+  - "TALL_SEAGRASS"
+  - "MAGMA_BLOCK"
+  - "CACTUS"
+  - "VOID_AIR"
+
+# Настройки режимов телепортации
+rtp_settings:
+  # Обычный /rtp
+  default:
+    min_radius: 500
+    max_radius: 3000
+    cooldown: 60       # Кулдаун команды в секундах
+    tp_time: 5         # Время ожидания (warmup) перед телепортацией
+
+  # /rtp far
+  far:
+    min_radius: 1000
+    max_radius: 3000
+    cooldown: 600
+    tp_time: 10
+
+  # /rtp private
+  private:
+    min_radius: 50
+    max_radius: 300
+    cooldown: 120
+    tp_time: 5
+
+  # /rtp player <nick>
+  player:
+    min_radius: 200
+    max_radius: 1000
+    cooldown: 300
+    tp_time: 5

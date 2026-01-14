@@ -1,0 +1,6 @@
+name: JRTP
+version: '${project.version}'
+main: org.rebelland.jrtp.JRTP
+api-version: '1.16'
+
+depend: [RCore, WorldGuard]
