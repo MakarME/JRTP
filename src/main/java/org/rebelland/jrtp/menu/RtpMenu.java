@@ -1,6 +1,7 @@
 package org.rebelland.jrtp.menu;
 
 import config.MessageManager;
+import model.GlobalTimedMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +11,6 @@ import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.rebelland.jrtp.model.RtpType;
 import org.rebelland.jrtp.service.CooldownService;
-import org.rebelland.ultralib.model.GlobalTimedMenu;
 
 import java.util.HashMap;
 import java.util.Map;
