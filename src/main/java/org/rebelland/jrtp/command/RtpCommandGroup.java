@@ -2,7 +2,6 @@ package org.rebelland.jrtp.command;
 
 import config.MessageManager;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.annotation.AutoRegister;
 import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.model.SimpleComponent;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @AutoRegister
-public final class  RtpCommandGroup extends SimpleCommandGroup {
+public final class RtpCommandGroup extends SimpleCommandGroup {
 
     public RtpCommandGroup() {
         super("rtp");
@@ -33,13 +32,11 @@ public final class  RtpCommandGroup extends SimpleCommandGroup {
         if (!(sender instanceof Player)) return Collections.emptyList();
         Player player = (Player) sender;
 
-        // 2. Мир
         if (!RtpConfig.getInstance().getAllowedWorlds().contains(player.getWorld().getName())) {
             player.sendMessage(MessageManager.getInstance().getString(player, "messages.wrong_world"));
             return Collections.emptyList();
         }
 
-        // 3. Кулдаун
         if (!player.hasPermission("rtp.noCooldown")) {
             long timeLeft = CooldownService.getInstance().getTimeLeft(RtpType.DEFAULT, player.getUniqueId());
             if (timeLeft > 0) {
@@ -50,7 +47,6 @@ public final class  RtpCommandGroup extends SimpleCommandGroup {
             }
         }
 
-        // 4. Добавляем запрос (Тип DEFAULT, ключ rtp)
         RtpManager.getInstance().addRequest(
                 player,
                 RtpType.DEFAULT,

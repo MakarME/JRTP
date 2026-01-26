@@ -2,7 +2,6 @@ package org.rebelland.jrtp.command;
 
 import config.MessageManager;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.Common;
 import org.rebelland.jrtp.config.RtpConfig;
 import org.rebelland.jrtp.manager.RtpManager;
 import org.rebelland.jrtp.model.RtpType;
