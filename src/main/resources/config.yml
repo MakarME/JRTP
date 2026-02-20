@@ -21,28 +21,28 @@ unsafe_blocks:
 rtp_settings:
   # Обычный /rtp
   default:
-    min_radius: 500
-    max_radius: 3000
-    cooldown: 60       # Кулдаун команды в секундах
+    min_radius: 100
+    max_radius: 2000
+    cooldown: 10       # Кулдаун команды в секундах
     tp_time: 5         # Время ожидания (warmup) перед телепортацией
 
   # /rtp far
   far:
-    min_radius: 1000
+    min_radius: 500
     max_radius: 3000
-    cooldown: 600
+    cooldown: 400
     tp_time: 10
 
   # /rtp private
   private:
     min_radius: 50
-    max_radius: 300
-    cooldown: 120
-    tp_time: 5
+    max_radius: 100
+    cooldown: 6000
+    tp_time: 15
 
   # /rtp player <nick>
   player:
     min_radius: 200
-    max_radius: 1000
-    cooldown: 300
-    tp_time: 5
+    max_radius: 300
+    cooldown: 6000
+    tp_time: 15

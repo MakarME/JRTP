@@ -1,6 +1,7 @@
 package org.rebelland.jrtp;
 
 import config.MessageManager;
+import org.mineacademy.fo.command.SimpleCommand;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.remain.Remain;
 

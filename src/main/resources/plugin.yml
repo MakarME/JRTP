@@ -3,4 +3,46 @@ version: '${project.version}'
 main: org.rebelland.jrtp.JRTP
 api-version: '1.16'
 
-depend: [RCore, WorldGuard]
+depend: [RCore, WorldGuard, LuckPerms]
+
+permissions:
+  # --- Задержки для обычного RTP ---
+  jrtp.delay.default.4:
+    description: Cooldown 4 sec for default rtp (Rebel)
+    default: false
+  jrtp.delay.default.3:
+    description: Cooldown 3 sec for default rtp (Hero)
+    default: false
+  jrtp.delay.default.2:
+    description: Cooldown 2 sec for default rtp (Shadow)
+    default: false
+  jrtp.delay.default.0:
+    description: Instant default rtp (Griefer+)
+    default: false
+
+  # --- Задержки для дальнего RTP (FAR) ---
+  jrtp.delay.far.10:
+    description: Cooldown 10 sec for far rtp (Shadow)
+    default: false
+  jrtp.delay.far.6:
+    description: Cooldown 6 sec for far rtp (Griefer)
+    default: false
+  jrtp.delay.far.3:
+    description: Cooldown 3 sec for far rtp (Chaos)
+    default: false
+  jrtp.delay.far.0:
+    description: Instant far rtp (Phoenix+)
+    default: false
+
+  # --- Задержки для приватного RTP (PRIVATE) ---
+  jrtp.delay.private.5:
+    description: Cooldown 5 sec for private rtp (Phoenix)
+    default: false
+  jrtp.delay.private.0:
+    description: Instant private rtp (Anarchist+)
+    default: false
+
+  # --- Задержки для RTP к игроку (PLAYER) ---
+  jrtp.delay.player.0:
+    description: Instant player rtp (Warden)
+    default: false

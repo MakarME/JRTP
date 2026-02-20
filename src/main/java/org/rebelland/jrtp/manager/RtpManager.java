@@ -110,20 +110,16 @@ public class RtpManager {
     }
 
     private void startTeleportLogic(RtpRequest req, Location[] resultContainer) {
-        int seconds = req.settings.getTpTime();
-        if (req.player.hasPermission("jrtp.instantTp")) {
-            seconds = 0;
-        }
+        int seconds = getTeleportDelay(req.player, req.type, req.settings.getTpTime());
 
         Map<String, String> ph = new HashMap<>();
         ph.put("world", req.player.getWorld().getName());
 
         // --- 1. ЗАПОМИНАЕМ СТАРТОВУЮ ЛОКАЦИЮ ---
         final Location startLocation = req.player.getLocation();
-        int finalSeconds = seconds;
 
         new BukkitRunnable() {
-            int timeLeft = finalSeconds;
+            int timeLeft = seconds;
 
             @Override
             public void run() {
@@ -195,6 +191,29 @@ public class RtpManager {
                 }
             }
         }.runTaskTimer(SimplePlugin.getInstance(), 0L, 5L);
+    }
+
+    private int getTeleportDelay(Player player, RtpType type, int defaultDelay) {
+        // Если есть старое право на инстант-тп, сразу возвращаем 0
+        if (player.hasPermission("jrtp.instantTp")) {
+            return 0;
+        }
+
+        // Получаем тип строкой: "default", "far", "private", "player"
+        String typeName = type.name().toLowerCase();
+
+        // Идем циклом от 0 (самая быстрая телепортация) до defaultDelay
+        for (int i = 0; i < defaultDelay; i++) {
+            // Генерируем строку права, например: jrtp.delay.default.3
+            String permission = "jrtp.delay." + typeName + "." + i;
+
+            if (player.hasPermission(permission)) {
+                return i; // Нашли минимальную задержку!
+            }
+        }
+
+        // Если никаких специальных прав не найдено, отдаем время из конфига (5 сек)
+        return defaultDelay;
     }
 
     private void teleportPlayer(RtpRequest req, Location loc) {

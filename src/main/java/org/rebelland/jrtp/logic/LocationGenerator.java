@@ -27,9 +27,17 @@ public class LocationGenerator {
     public static Location generateRandom(World world, int minR, int maxR) {
         Location safe = null;
         int attempts = 50;
+
+        // Получаем центр мира из настроек WorldBorder
+        Location center = world.getWorldBorder().getCenter();
+        int centerX = center.getBlockX();
+        int centerZ = center.getBlockZ();
+
         while (safe == null && attempts-- > 0) {
-            int x = getRandomCoordinate(minR, maxR);
-            int z = getRandomCoordinate(minR, maxR);
+            // Генерируем смещение и прибавляем к центру мира
+            int x = centerX + getRandomCoordinate(minR, maxR);
+            int z = centerZ + getRandomCoordinate(minR, maxR);
+
             safe = getSafeY(world, x, z);
         }
         return safe;
