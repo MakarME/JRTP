@@ -40,6 +40,11 @@ public class RtpMenu extends GlobalTimedMenu {
         setSize(9 * 3);
         setTitle(manager.getString(null, "menu.rtp.title"));
 
+        for (RtpType type : RtpType.values()) {
+            long left = CooldownService.getInstance().getTimeLeft(type, uuid);
+            cooldowns.put(type, formatTime(left));
+        }
+
         registerRtpButton(10, RtpType.DEFAULT, "rtpItem", "rtp", CompMaterial.GRASS_BLOCK, "");
         registerRtpButton(12, RtpType.FAR, "rtpfItem", "rtp far", CompMaterial.MAP, "shadow");
         registerRtpButton(14, RtpType.PRIVATE, "rtpbItem", "rtp private", CompMaterial.ANCIENT_DEBRIS, "phoenix");
